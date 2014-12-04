@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="content" method="upgrade">
+	<name>DayCalc</name>
+	<author>Ufuk Avcu</author>
+	<creationDate>29.04.2013</creationDate>
+	<copyright>Copyright (C) 2009 - 2013 JooAg. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@joomla-agentur.de</authorEmail>
+	<authorUrl>www.joomla-agentur.de</authorUrl>
+	<version>0.0.1</version>
+	<description>A small Plugin to calculate Dates between a Date and today.</description>
+	<files>
+		<filename plugin="daycalc">daycalc.php</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="show_months" type="checkbox" label="Show months" description="Show the months" value="1" />
+				<field name="show_years" type="checkbox" label="Show years" description="Show the years" value="1" />
+				<field name="show_date" type="checkbox" label="Show date" description="Show the date" />
+				<field name="class_green" type="text" default="30" label="Max. days for green button" description="" size="10" />
+				<field name="class_orange" type="text" default="60" label="Max. days for orange button" description="" size="10" />
+				<field name="class_red" type="text" default="90" label="Max. days for red button" description="" size="10" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
