@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="plugin" group="content" method="upgrade">
-	<name>DayCalc</name>
+	<name>Count Days</name>
 	<author>Ufuk Avcu</author>
 	<creationDate>29.04.2013</creationDate>
-	<copyright>Copyright (C) 2009 - 2013 JooAg. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2009 - 2015 JooAg. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@joomla-agentur.de</authorEmail>
 	<authorUrl>www.joomla-agentur.de</authorUrl>
-	<version>0.0.1</version>
-	<description>A small Plugin to calculate Dates between a Date and today.</description>
+	<version>3.x.0 Beta</version>
+	<description>A small Plugin to count Days, Months and Years between a Date and today.</description>
 	<files>
-		<filename plugin="daycalc">daycalc.php</filename>
+		<filename plugin="jooag_countdays">jooag_countdays.php</filename>
 	</files>
 	<config>
 		<fields name="params">
