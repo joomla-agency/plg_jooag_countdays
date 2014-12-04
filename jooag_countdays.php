@@ -1,25 +1,23 @@
 <?php
 /**
-Joomla Agency
-A small Plugin to Calculate the Days for a specific Date
-Usage:
-Put somewhere in your Content or Module following Snippet - {dateToNow}11.11.2011{/dateToNow}
-**/
+* @package JooAg Countdown
+* @version 3.x.0 Beta
+* @for Joomla 3.3+
+* @author Joomla Agentur - http://www.joomla-agentur.de
+* @copyright Copyright (c) 2009 - 2015 Joomla-Agentur All rights reserved.
+* @license GNU General Public License version 2 or later;
+* @description A small Plugin to Calculate the Days for a specific Date
+* @thanksto Thanks to Guido De Gobbis from http://joomtools.de for his great contributions!
+*/
+defined('_JEXEC') or die;
 
-defined( '_JEXEC' ) or die( 'Restricted access' );
-
-jimport( 'joomla.plugin.plugin');
-
-class plgContentDayCalc extends JPlugin
+class plgContentJooagCountDays extends JPlugin
 {
-	public function __construct(&$subject, $config)
-	{
-        $app = JFactory::getApplication();
-
-        if($app->isAdmin()){
-            return;
-        }
-		
+	public function __construct(&$subject, $config)	{
+		$app = JFactory::getApplication();
+	        if($app->isAdmin()){
+	            return;
+	        }
 		parent::__construct($subject, $config);
 	}
 	
@@ -32,11 +30,11 @@ class plgContentDayCalc extends JPlugin
 
 		$regexDTN = "#{dateToNow}(.*?){/dateToNow}#s";
 
-		$article->text = preg_replace_callback( $regexDTN, array(&$this,'plgDayCalcDTN_replacer'), $article->text );
+		$article->text = preg_replace_callback( $regexDTN, array(&$this,'plgCountDaysOutput'), $article->text );
 		return true;
 	}
 	
-	protected function plgDayCalcDTN_replacer ( &$matches) 
+	protected function plgCountDaysOutput ( &$matches) 
 	{
 		$date = $matches[1];
 		$datetime1 = new DateTime($date);
