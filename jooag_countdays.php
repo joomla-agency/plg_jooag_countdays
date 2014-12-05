@@ -1,40 +1,37 @@
 <?php
 /**
-* @package JooAg Countdown
-* @version 3.x.0 Beta
-* @for Joomla 3.3+
-* @author Joomla Agentur - http://www.joomla-agentur.de
-* @copyright Copyright (c) 2009 - 2015 Joomla-Agentur All rights reserved.
-* @license GNU General Public License version 2 or later;
-* @description A small Plugin to Calculate the Days for a specific Date
-* @thanksto Thanks to Guido De Gobbis from http://joomtools.de for his great contributions!
-*/
-defined('_JEXEC') or die;
+ * @package 	JooAg Count Days
+ * @version 	3.x.0 Beta
+ * @for 	Joomla 3.3+ 
+ * @author 	Joomla Agentur - http://www.joomla-agentur.de
+ * @copyright 	Copyright (c) 2009 - 2015 Joomla-Agentur All rights reserved.
+ * @license 	GNU General Public License version 2 or later;
+ * @description A small Plugin to Calculate the Days for a specific Date
+ */
 
-class plgContentJooagCountDays extends JPlugin
+defined( '_JEXEC' ) or die;
+
+class plgContentJooag_countdays extends JPlugin
 {
-	public function __construct(&$subject, $config)	{
-		$app = JFactory::getApplication();
-	        if($app->isAdmin()){
-	            return;
-	        }
-		parent::__construct($subject, $config);
-	}
-	
-	public function onContentPrepare($context, &$article, &$params, $page=0 )
-	{
-
-		if ( JString::strpos( $article->text, 'dateToNow' ) === false ) {
+	public function onContentPrepare($context, &$article, &$params, $page=0 ){
+		
+		// Performance Check
+		if ( JString::strpos( $article->text, '{dateToNow}' ) === false ) {
 			return true;
 		}
-
-		$regexDTN = "#{dateToNow}(.*?){/dateToNow}#s";
-
-		$article->text = preg_replace_callback( $regexDTN, array(&$this,'plgCountDaysOutput'), $article->text );
-		return true;
+		
+		// Regular expression
+		$regex = "#{dateToNow}(.*?){/dateToNow}#s";
+		
+		// Replacement of {dateToNow}xxx{/dateToNow}
+		$article->text = preg_replace_callback( $regex, array(&$this,'plgCountDaysOutput'), $article->text );
+		
+		if(!empty($article->introtext)){
+			$article->introtext = preg_replace_callback( $regex, array(&$this,'plgCountDaysOutput'), $article->introtext );
+		}	
 	}
 	
-	protected function plgCountDaysOutput ( &$matches) 
+	protected function plgCountDaysOutput( &$matches) 
 	{
 		$date = $matches[1];
 		$datetime1 = new DateTime($date);
