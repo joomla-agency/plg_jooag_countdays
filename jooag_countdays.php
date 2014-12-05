@@ -1,6 +1,6 @@
 <?php
 /**
- * @package 	JooAg Count Days
+ * @package 	JooAg CountDays
  * @version 	3.x.0 Beta
  * @for 	Joomla 3.3+ 
  * @author 	Joomla Agentur - http://www.joomla-agentur.de
