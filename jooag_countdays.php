@@ -7,7 +7,6 @@
 * @copyright Copyright (c) 2009 - 2015 Joomla-Agentur All rights reserved.
 * @license GNU General Public License version 2 or later;
 * @description A small Plugin to Calculate the Days for a specific Date
-* @thanksto Thanks to Guido De Gobbis from http://joomtools.de for his great contributions!
 */
 defined('_JEXEC') or die;
 
